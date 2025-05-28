@@ -6,8 +6,98 @@
     <title>Deny Cartomante e Mago - Especialista em Tarot e Baralho Cigano</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="style.css">
     <link rel="script" href="script.js">
+    <style>
+        /* Estilos adicionais para o modal */
+        .service-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: #1a0a2e;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            position: relative;
+            color: #fff;
+            border: 1px solid #6a0dad;
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .modal-title {
+            color: #9b4dca;
+            font-family: 'Cinzel Decorative', serif;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        
+        .modal-price {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin: 20px 0;
+            color: #9b4dca;
+        }
+        
+        .whatsapp-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: background 0.3s;
+            font-size: 1.1em;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 10px;
+        }
+        
+        .pricing-table tr {
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .pricing-table tr:hover {
+            background: rgba(106, 13, 173, 0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -119,27 +209,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showServiceModal('Proteção espiritual pessoal', 'Criar um campo energético protetor individual que envolve a pessoa, defendendo-a contra influências negativas e ataques espirituais. Este trabalho cria uma barreira energética que filtra vibrações negativas e mantém sua aura protegida.', 'R$180')">
                             <td>Proteção espiritual pessoal</td>
                             <td>R$180</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Banimento e limpeza energética', 'Remoção profunda de energias negativas, más influências e miasmas energéticos que possam estar afetando a pessoa. Este ritual limpa completamente seu campo áurico e ambientes, eliminando toda energia estagnada.', 'R$200')">
                             <td>Banimento e limpeza energética</td>
                             <td>R$200</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Quebra de inveja/olho gordo', 'Neutralização de energias de inveja e mau-olhado que estejam causando bloqueios ou problemas na vida da pessoa. Trabalho específico para dissolver energias de olho grande e inveja profissional/pessoal.', 'R$190')">
                             <td>Quebra de inveja/olho gordo</td>
                             <td>R$190</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Blindagem energética', 'Fortalecimento da proteção pessoal contra ataques espirituais e influências negativas persistentes. Cria uma armadura energética que reflete negatividade e mantém seu campo vital fortalecido.', 'R$180')">
                             <td>Blindagem energética</td>
                             <td>R$180</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Proteção contra oráculos e adivinhações', 'Criação de barreiras para evitar que terceiros tenham acesso espiritual à vida da pessoa através de métodos divinatórios. Bloqueia tentativas de leitura energética não autorizada sobre você.', 'R$230')">
                             <td>Proteção contra oráculos e adivinhações</td>
                             <td>R$230</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Reversão de feitiços', 'Identificação e devolução de magias ou energias negativas que foram enviadas contra a pessoa. Trabalho poderoso que não apenas remove mas devolve ao emissor toda energia negativa direcionada a você.', 'R$250')">
                             <td>Reversão de feitiços</td>
                             <td>R$250</td>
                         </tr>
@@ -151,58 +241,54 @@
                 <table class="pricing-table">
                     <thead>
                         <tr>
-                            <th>Serviço</th>
+                            <th>trabalhos amorosos</th>
                             <th>Preço Promocional</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showServiceModal('Amarração amorosa', 'Ritual para unir duas pessoas afetivamente, fortalecendo os laços emocionais e espirituais entre elas. Trabalho que harmoniza energias e aproxima corações de forma natural e duradoura.', 'R$400')">
                             <td>Amarração amorosa</td>
-                            <td>R$350</td>
+                            <td>R$400</td>
                         </tr>
-                        <tr>
-                            <td>Chora na minha bct</td>
+                        <tr onclick="showServiceModal('Amor próprio', 'Trabalho para fortalecer a autoestima, o autocuidado e a capacidade de amar a si mesmo. Fundamental para quem busca relacionamentos saudáveis ou superar términos dolorosos.', 'R$200')">
+                            <td>amor proprio</td>
+                            <td>R$200</td>
+                        </tr>
+                        <tr onclick="showServiceModal('Atração e glamour', 'Aumento do magnetismo pessoal e poder de sedução, tornando a pessoa mais atraente energeticamente. Trabalho que realça sua beleza interior e exterior, aumentando seu poder de atração.', 'R$190')">
+                            <td>atração e glamour</td>
                             <td>R$190</td>
                         </tr>
-                        <tr>
-                            <td>Vira pensamento</td>
-                            <td>R$199</td>
+                        <tr onclick="showServiceModal('Chora aos meus pés', 'Ritual para atrair ou dominar afetivamente outra pessoa, fazendo com que ela se interesse intensamente. Trabalho poderoso que cria uma conexão emocional profunda.', 'R$190')">
+                            <td>Chora aos meus pés</td>
+                            <td>R$190</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Vira pensamento', 'Fazer com que alguém pense constantemente em quem solicita o trabalho, criando uma conexão mental. A pessoa alvo não conseguirá tirar você de seus pensamentos.', 'R$250')">
+                            <td>Vira pensamento</td>
+                            <td>R$250</td>
+                        </tr>
+                        <tr onclick="showServiceModal('Atração fatal', 'Intensificação da atração física e emocional, tornando-a quase irresistível para a pessoa desejada. Trabalho que aumenta exponencialmente seu magnetismo pessoal para alguém específico.', 'R$350')">
                             <td>Atração fatal</td>
                             <td>R$350</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Abertura amorosa', 'Abertura de caminhos para novos relacionamentos e oportunidades amorosas. Ideal para quem quer encontrar um novo amor ou sair da solidão.', 'R$180')">
                             <td>Abertura amorosa</td>
+                            <td>R$180</td>
+                        </tr>
+                        <tr onclick="showServiceModal('Corte de laços', 'Rompe laços energéticos com pessoas do passado que ainda influenciam emocionalmente. Libertação de relacionamentos passados que ainda causam sofrimento.', 'R$160')">
+                            <td>Corte de laços</td>
                             <td>R$160</td>
                         </tr>
-                        <tr>
-                            <td>Corte de laços</td>
-                            <td>R$140</td>
-                        </tr>
-                        <tr>
-                            <td>Proteção de casal</td>
-                            <td>R$150</td>
-                        </tr>
-                        <tr>
-                            <td>Separação de casal</td>
-                            <td>R$180</td>
-                        </tr>
-                        <tr>
-                            <td>Broxamento</td>
-                            <td>R$180</td>
-                        </tr>
-                        <tr>
-                            <td>União de casal</td>
-                            <td>R$180</td>
-                        </tr>
-                        <tr>
-                            <td>Afastamento de rival</td>
-                            <td>R$150</td>
-                        </tr>
-                        <tr>
-                            <td>Varredura</td>
+                        <tr onclick="showServiceModal('Corte de laços (hoodoo)', 'Rompe laços energéticos utilizando técnicas específicas da tradição Hoodoo. Método poderoso para cortar amarras espirituais persistentes.', 'R$200')">
+                            <td>Corte de laços(hoodoo)</td>
                             <td>R$200</td>
+                        </tr>
+                        <tr onclick="showServiceModal('Proteção de casal', 'Proteção energética para relacionamentos contra influências externas negativas. Mantém terceiros afastados e protege o relacionamento de invejas e interferências.', 'R$200')">
+                            <td>Proteção de casal</td>
+                            <td>R$200</td>
+                        </tr>
+                        <tr onclick="showServiceModal('União de casal', 'Reforço da ligação emocional e espiritual entre parceiros, harmonizando a relação. Trabalho para melhorar comunicação, intimidade e conexão no relacionamento.', 'R$230')">
+                            <td>União de casal</td>
+                            <td>R$230</td>
                         </tr>
                     </tbody>
                 </table>
@@ -217,39 +303,45 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showServiceModal('Abertura de caminhos financeiros', 'Desbloqueio de oportunidades e remoção de obstáculos que impedem a prosperidade financeira. Remove bloqueios invisíveis que estão dificultando seu progresso material.', 'R$250')">
                             <td>Abertura de caminhos financeiros</td>
-                            <td>R$220</td>
+                            <td>R$250</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Chama dinheiro', 'Atração de recursos financeiros e oportunidades de ganho, aumentando o fluxo de dinheiro. Trabalho que atrai novas fontes de renda e oportunidades inesperadas.', 'R$230')">
                             <td>Chama dinheiro</td>
-                            <td>R$200</td>
+                            <td>R$230</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Banimento/Quebra de amarras financeiras', 'Eliminação de bloqueios energéticos que impedem progresso e ganhos financeiros. Rompe padrões de escassez e crenças limitantes sobre dinheiro.', 'R$230')">
                             <td>Banimento/Quebra de amarras financeiras</td>
                             <td>R$230</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Limpeza energética de negócios', 'Remoção de energias negativas de um empreendimento ou ambiente de trabalho. Fundamental para empresas que estão enfrentando obstáculos inexplicáveis.', 'R$230')">
                             <td>Limpeza energética de negócios</td>
-                            <td>R$210</td>
+                            <td>R$230</td>
                         </tr>
-                        <tr>
-                            <td>Magnetismo para vendas</td>
-                            <td>R$190</td>
-                        </tr>
-                        <tr>
+                        <tr onclick="showServiceModal('Prosperidade profissional', 'Impulsionamento da carreira ou negócios, atraindo reconhecimento e sucesso. Aumenta suas chances de promoções, novos clientes e oportunidades profissionais.', 'R$220')">
                             <td>Prosperidade profissional</td>
                             <td>R$220</td>
-                        </tr>
-                        <tr>
-                            <td>Proteção contra inveja no ambiente de trabalho</td>
-                            <td>R$180</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
+    
+    <!-- Modal simplificado apenas com descrição -->
+    <div id="serviceModal" class="service-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeServiceModal()">&times;</span>
+            <h2 class="modal-title" id="serviceModalTitle">Título do Serviço</h2>
+            <p class="modal-price" id="serviceModalPrice">Preço: R$0,00</p>
+            <p class="modal-description" id="serviceModalDescription">Descrição detalhada do serviço selecionado.</p>
+            
+            <a href="https://wa.me/5511933383977" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Solicitar este trabalho via WhatsApp
+            </a>
+        </div>
+    </div>
     
     <section class="social" id="social">
         <div class="container">
@@ -276,6 +368,7 @@
     </footer>
     
     <script>
+        // Funções para o menu móvel
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.getElementById('navMenu');
         
@@ -292,6 +385,7 @@
             });
         });
         
+        // Funções para as abas
         const tabBtns = document.querySelectorAll('.tab-btn');
         
         tabBtns.forEach(btn => {
@@ -308,6 +402,7 @@
             });
         });
         
+        // Funções para rolagem suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -318,6 +413,7 @@
             });
         });
         
+        // Efeito de sombra no header ao rolar
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -326,6 +422,28 @@
                 header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
             }
         });
+        
+        // Funções para o modal de serviços (simplificado)
+        function showServiceModal(title, description, price) {
+            document.getElementById('serviceModalTitle').textContent = title;
+            document.getElementById('serviceModalDescription').textContent = description;
+            document.getElementById('serviceModalPrice').textContent = `Preço: ${price}`;
+            document.getElementById('serviceModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('serviceModal');
+            if (event.target == modal) {
+                closeServiceModal();
+            }
+        }
     </script>
 </body>
-</html> 
+</html>
